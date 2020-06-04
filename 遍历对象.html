@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="demoReact">
+
+    </div>
+    <script type="text/babel">
+        let obj = {
+            name: 'yjj',
+            age: '24',
+            sex: 'man'
+        }
+
+        // Object.keys(obj).map( ( v, i )  => {
+        //     return <p key={ i }>便利的属性是{ v },便利的值是{ obj[v] }</p>
+        // } )
+
+        let myDom = (
+            <div>
+                { 
+                    Object.keys(obj).map( ( v, i )  => {
+            return <p key={ i }>便利的属性是{ v },便利的值是{ obj[v] }</p>
+        } )
+                 }
+            </div>
+        )
+        ReactDOM.render( myDom, document.getElementById( 'demoReact' ) )
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+    <style>
+
+        .ccc {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="demoReact">
+
+    </div>
+    <script type="text/babel">
+        // let text = 'nihao'
+        // function name( name1, age ) {
+        //     return  `name:${name1},age:${age}`
+        // }
+        // let name1 = 'yjj'
+        // let age = '15'
+        // let arr = [
+        //     <p>123123</p>,
+        //     <p>123123</p>,
+        //     <p>123123</p>,
+        //     <p>123123</p>,
+        //     <p>123123</p>,
+        //     <p>123123</p>
+        // ]
+        // let link = 'https://www.baidu.com'
+        let arr = [ '1', '2', '3' ]
+        // let myDom = arr.map( ( item, index ) => {
+        //     return ( <p key={ index }> { item } </p> )
+        // } )
+        let index = -1
+        function renDom() {
+            let myDom = arr.map( ( v, i ) => <p style={{ color: index == i ? 'red' : '' }} key={i} onClick={ () => {index = i;console.log(i);render()} } > { v } </p> )
+            return myDom
+        }
+        // let myDom = (
+        //         <h1 className='ccc'>{ name( name1, age ) }</h1>    
+        //         <h1>{ arr }</h1>
+        //         <a href={ link }>带你玩i去</a>
+        // )
+        // console.log(myDom)
+        function render() {
+            ReactDOM.render( renDom(), document.getElementById( 'demoReact' ) )
+        }
+        render()
+    </script>
+</body>
+</html>

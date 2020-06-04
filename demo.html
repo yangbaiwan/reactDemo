@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+    <script src="./node_modules/prop-types/prop-types.js"></script>
+</head>
+<body>
+    <div id="Comp"></div>
+    <script type="text/babel">
+    let arr = [
+        'yjj1',
+        'yjj2',
+        'yjj3'
+    ]
+    let show = true
+        function Com( props ) {
+            return (
+                <div  style={{ display: show ? 'block' : 'none' }}>
+                    {
+                        props.arr.map( ( v, i ) => <div key={ i } >{ v }</div> ) 
+                    }    
+                </div>
+            )
+        }
+        function Comp( props ) {
+            return (
+                <div>
+                    <h1 onClick={ () => { show = !show; renDom() } }>英雄展示</h1>
+                    <Com arr={arr}/>
+                </div>
+            )
+        }
+        function renDom() {
+            ReactDOM.render( <Comp/>, document.getElementById( 'Comp' ) )  
+        }
+        renDom()
+    </script>
+</body>
+</html>
