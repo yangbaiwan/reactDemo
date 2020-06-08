@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./node_modules/react/umd/react.development.js"></script>
+  <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+  <script src="./node_modules/babel-standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="demoReact"></div>
+  <script type="text/babel">
+    class Com extends React.Component {
+      constructor(props) {
+        super(props)
+        this.func = this.func.bind( this )
+      }
+      funa() {
+        console.log(this)
+      }
+      funb = () => {
+        console.log( this )
+      }
+      func() {
+        console.log( this )
+      }
+      fund( a, e ) {
+        console.log(a)
+        console.log(e)
+      }
+      render() {
+        return (
+          <div>
+            <button onClick={ this.funa.bind( this ) } >click me</button>
+            <button onClick={ this.funb } >click me</button>
+            <button onClick={ this.func } >click me</button>
+            <button onClick={ () => { this.funa() } } >click me</button>
+            <button onClick={ (e) => { this.fund('我是参数', e) } } >get argu</button>
+            <button onClick={ this.fund.bind( this, '我是参数' ) } >get argu</button>
+          </div>
+        )
+      }
+      
+    }
+    ReactDOM.render( <Com/>, document.getElementById( 'demoReact' ) )
+  </script>
+</body>
+
+</html>

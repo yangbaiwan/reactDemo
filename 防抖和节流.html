@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="content"></div>
+  <script>
+    var a = 1000
+    var html = ''
+    for (let i = 0; i < a; i++) {
+      html += `<div>${i}<div>`
+    }
+    document.getElementById('content').innerHTML = html
+
+    function getWindowTop() {
+      console.log( this )
+      var top = document.documentElement.scrollTop
+      console.log( '当前位置：', top )
+    }
+    function debounce( fn, delay ) {
+      var timer = null
+      console.log( timer )
+      return function () {
+        if (timer) {
+          clearTimeout( timer )
+        }
+        timer = setTimeout( fn, 1000 )
+      }
+    }
+    window.onscroll = debounce( getWindowTop, 1000 )
+  </script>
+</body>
+
+</html>
