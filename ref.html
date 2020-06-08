@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./node_modules/react/umd/react.development.js"></script>
+  <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+  <script src="./node_modules/babel-standalone/babel.min.js"></script>
+  <style>
+    .ccc {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demoReact"></div>
+  <script type="text/babel">
+    class Com extends React.Component {
+      constructor(props) {
+        super(props)
+        this.newRef = React.createRef()
+      }
+      /**
+      '1'
+      fun = () => {
+        console.log( this.refs.demoInput.value )
+      }
+      render() {
+        return (
+          <div>
+            <input type='text' ref='demoInput' placeholder='请输入' />
+            <button onClick={ this.fun }>得到数据</button>
+          </div>
+        )
+      }
+      */
+      /**
+      2
+      fun = () => {
+        console.log( this.currInput.value )
+      }
+      render() {
+        return (
+          <div>
+            <input type="text" ref={ ( input ) => { this.currInput = input } } />
+            <button onClick={ this.fun }>点击我</button>
+          </div>
+        )
+      }
+      
+      
+      */
+      render() {
+        return (
+          <div>
+            <input type="text" ref = { this.newRef } />
+            <button onClick={() => { console.log( this.newRef.current.value ) }}>点击我</button>
+          </div>
+        )
+      }
+      
+    }
+    ReactDOM.render( <Com/>, document.getElementById( 'demoReact' ) )
+  </script>
+</body>
+
+</html>

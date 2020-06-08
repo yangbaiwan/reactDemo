@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    // var obj = {
+    //   name: 'yjj'
+    // }
+
+    // if ( 'name' in obj) {
+    //   console.log( 'name' )
+    // } else {
+    //   console.log( 'undefined' )
+    // }
+
+    let obj = {
+      name: 'yjj',
+      age: 24
+    }
+    let objProxy = new Proxy(obj, {
+      // get: function (target, key) {
+      //   console.log(target, key)
+      //   if ( key in obj) {
+      //     return 1
+      //   }
+      //   return Promise.reject(`${key} is not undefined`)
+      // },
+      set: function (target, propKey, receiver) {
+        console.log(target, propKey, receiver)
+        if (typeof receiver === 'string') {
+          console.log('propKey', propKey)
+          console.log('receiver', receiver)
+          target[propKey] = receiver.trim()
+          console.log(target)
+        }
+      }
+    })
+    // obj.age = 100
+    // console.log(objProxy.age)
+    // console.log(objProxy.age1)
+    // console.log(objProxy.ccc)
+    objProxy.ccc = ' 100 '
+    console.log(objProxy.ccc)
+  </script>
+</body>
+
+</html>

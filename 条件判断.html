@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./node_modules/react/umd/react.development.js"></script>
+  <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+  <script src="./node_modules/babel-standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="demoReact"></div>
+  <script type="text/babel">
+    class Com extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          bool: true,
+          text: 'haha'
+        }
+      }
+      funa() {
+        if (this.state.bool) {
+          this.setState({
+            text: '1111'
+          })
+        }
+      }
+      render() {
+        // if ( this.state.bool ) {
+        //   this.setState({
+        //     text: 'hhh'
+        //   })
+        // } else {
+        //   this.setState({
+        //     text: 'xxx'
+        //   })
+        // }
+        
+        return (
+          <div>
+            123123
+            <button onClick={ () => { this.funa() } } >click</button>
+            { this.state.text }
+          </div>
+        )
+      }
+    }
+    ReactDOM.render( <Com/>, document.getElementById( 'demoReact' ) )
+  </script>
+</body>
+
+</html>

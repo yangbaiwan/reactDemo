@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./node_modules/react/umd/react.development.js"></script>
+  <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+  <script src="./node_modules/babel-standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="demoReact"></div>
+  <script type="text/babel">
+
+    class Coma extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+      render() {
+        return (
+          <div>{this.props.text}</div>
+        )
+      }
+    }
+
+    class  Comb extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+      render() {
+        return (
+          <div>{this.props.text}</div>
+        )
+      }
+    }
+
+    class Comp extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          text: '我是两个组件都想使用的数据！！！'
+        }
+      }
+      fun = () => {
+        this.setState({
+          text: '123123'
+        })
+      }
+      render() {
+        return (
+          <div>
+            <button onClick={ this.fun } >click</button>
+            <Coma text={ this.state.text } />
+            <Comb text={ this.state.text }/>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render( <Comp/>, document.getElementById( 'demoReact' ) )
+  </script>
+</body>
+
+</html>
